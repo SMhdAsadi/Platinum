@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<VBox alignment="CENTER" prefHeight="343.0" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.login.Page2Controller">
+   <children>
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <FontAwesomeIconView fill="WHITE" glyphName="USER" styleClass="icon" />
+            <JFXTextField fx:id="name" focusColor="BLUE" prefHeight="31.0" prefWidth="260.0" promptText="your name" unFocusColor="#515151" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <FontAwesomeIconView fill="WHITE" glyphName="INFO" styleClass="icon">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin></FontAwesomeIconView>
+            <JFXTextArea fx:id="bio" prefHeight="120.0" prefWidth="270.0" promptText="write your bio here" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </HBox>
+      <Label text="choose your avatar">
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </Label>
+      <GridPane alignment="CENTER" hgap="4.0" vgap="4.0">
+        <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+          <ColumnConstraints />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints vgrow="SOMETIMES" />
+          <RowConstraints vgrow="SOMETIMES" />
+          <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Circle fx:id="avatarCircle0" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle1" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle2" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle3" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle4" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle5" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle6" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle7" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle8" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle9" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle10" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle11" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle12" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle13" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle14" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle15" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle16" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle17" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle18" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="avatarCircle19" fill="#1f93ff00" onMouseClicked="#avatarCircleClicked" radius="27.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </GridPane>
+   </children>
+</VBox>

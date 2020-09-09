@@ -1,0 +1,16 @@
+@font-face
+{
+    src: url("../../resources/fonts/OpenSans.ttf");
+}
+
+.jfx-progress-bar .track
+{
+    -fx-background-color: transparent;
+    -fx-background-radius: 30;
+}
+
+.jfx-progress-bar .bar
+{
+    -fx-background-color: #7f8c8d;
+    -fx-background-radius: 30;
+}

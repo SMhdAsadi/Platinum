@@ -1,0 +1,128 @@
+@font-face
+{
+    src: url("../../resources/fonts/OpenSans.ttf");
+}
+
+@font-face
+{
+    src: url("../../resources/fonts/BigSpace.ttf");
+}
+
+.root
+{
+    -fx-font-size: 15;
+    -fx-background-color: linear-gradient(to bottom, #2c3e50, #95a5a6);
+}
+
+.jfx-text-field
+{
+    -fx-font-family: "Open Sans Light";
+    -jfx-focus-color: #3498db;
+    -jfx-unfocus-color: #515151;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: rgba(149, 165, 166, 0.7);
+    -fx-pref-width: 270;
+    -fx-pref-height: 40;
+}
+
+.jfx-text-area
+{
+    -fx-font-family: "Open Sans Light";
+    -jfx-focus-color: #3498db;
+    -jfx-unfocus-color: #515151;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: rgba(149, 165, 166, 0.7);
+    -fx-pref-width: 270;
+    -fx-pref-height: 40;
+}
+
+.jfx-password-field
+{
+    -fx-font-family: "Open Sans Light";
+    -jfx-focus-color: #3498db;
+    -jfx-unfocus-color: #515151;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: rgba(149, 165, 166, 0.7);
+    -fx-pref-width: 270;
+    -fx-pref-height: 40;
+}
+
+.jfx-combo-box
+{
+    -fx-font-family: "Open Sans Light";
+    -jfx-focus-color: #3498db;
+    -jfx-unfocus-color: #515151;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: rgba(149, 165, 166, 0.7);
+    -fx-pref-width: 270;
+    -fx-pref-height: 40;
+}
+
+.jfx-combo-box .list-cell
+{
+    -fx-text-fill: white;
+    -fx-background-color: #2c3e50;
+}
+
+.label
+{
+    -fx-font-family: "Open Sans Light";
+    -fx-text-fill: white;
+    -fx-border-insets: 2;
+}
+
+.server-label
+{
+    -fx-font-family: "Open Sans Light";
+    -fx-font-size: 12;
+}
+
+.icon
+{
+    -fx-fill: #f1c40f;
+    -fx-font-size: 25;
+}
+
+.jfx-button
+{
+    -fx-font-family: "Open Sans Light";
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-pref-width: 115;
+    -fx-pref-height: 40;
+}
+
+.back-button
+{
+    -fx-font-family: "Open Sans Light";
+    -fx-background-radius: 100;
+    -fx-background-color: #3498db;
+    -fx-font-size: 12px;
+    -fx-pref-width: inherit;
+    -fx-pref-height: inherit;
+}
+
+.jfx-toggle-button
+{
+    -fx-font-family: "Open Sans Light";
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -jfx-toggle-color: #3498db;
+    -jfx-untoggle-color: #fafafa;
+    -jfx-toggle-line-color: #2980b9;
+    -jfx-untoggle-line-color: #b5aaaa;
+}
+
+.hyperlink
+{
+    -fx-font-family: "Open Sans Light";
+}
+
+.title
+{
+    -fx-font-size: 28;
+    -fx-text-fill: #3498db;
+    -fx-font-family: "Big Space";
+}

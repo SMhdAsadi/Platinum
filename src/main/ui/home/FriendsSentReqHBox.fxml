@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import customComponents.AutoScrollLabel?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER" fillHeight="false" spacing="5.0" style="-fx-background-radius: 10; -fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.home.FriendsSentReqHBoxController">
+   <children>
+      <FontAwesomeIconView fill="#f1c40f" glyphName="ANGLE_DOUBLE_UP" size="30" />
+      <VBox alignment="CENTER">
+         <children>
+            <AutoScrollLabel fx:id="usernameLabel" alignment="CENTER" delay="200" labelLength="14" prefWidth="164.0" text="USERNAME" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </AutoScrollLabel>
+            <Label text="waiting for user to respond..." textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <StackPane alignment="BOTTOM_RIGHT">
+         <children>
+            <Circle fx:id="avatar" fill="#2197ff00" radius="22.0" stroke="WHITE" strokeType="OUTSIDE" />
+            <Circle fx:id="status" fill="#f50808" radius="7.0" stroke="#cbcef8" strokeType="INSIDE" />
+         </children>
+      </StackPane>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="10.0" right="2.0" top="5.0" />
+   </padding>
+</HBox>

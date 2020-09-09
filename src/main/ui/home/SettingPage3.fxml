@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" fillWidth="false" spacing="40.0" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.home.SettingPage3Controller">
+   <children>
+      <Label text="Change Sound Setting" textFill="#efbf13">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXToggleButton fx:id="music" contentDisplay="RIGHT" graphicTextGap="10.0" prefWidth="230.0" selected="true" size="8.0" text="music" textFill="WHITE" toggleColor="#141f56" toggleLineColor="#213779" />
+      <JFXToggleButton fx:id="soundFX" contentDisplay="RIGHT" graphicTextGap="10.0" prefWidth="230.0" selected="true" size="8.0" text="Sound FX" textFill="WHITE" toggleColor="#141f56" toggleLineColor="#213779" />
+      <Label prefWidth="320.0" text="You can also change this settings in the game" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView fill="#efbf13" glyphName="INFO" size="20" />
+         </graphic>
+      </Label>
+      <Label contentDisplay="TOP" text="Volume" textFill="WHITE">
+         <graphic>
+            <JFXSlider fx:id="volume" majorTickUnit="50.0" minorTickCount="2" prefWidth="250.0" showTickMarks="true" value="100.0" />
+         </graphic>
+      </Label>
+   </children>
+</VBox>

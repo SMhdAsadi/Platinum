@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import customComponents.AutoCompletionTextField?>
+<?import customComponents.AutoScrollLabel?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<JFXTabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" side="BOTTOM" stylesheets="@HomeStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.home.HomeController">
+   <tabs>
+      <Tab fx:id="homeTab" style="-fx-cursor: hand;" text="Home">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <GridPane alignment="CENTER" style="-fx-background-color: #141f56;">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" styleClass="title" text="Platinum" textFill="#fafaff" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font size="33.0" />
+                                 </font>
+                                 <effect>
+                                    <Glow level="1.0" />
+                                 </effect>
+                              </Label>
+                              <HBox alignment="CENTER" GridPane.columnIndex="2">
+                                 <children>
+                                    <Label text="Your Score : " textFill="#fafafa4d">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <graphic>
+                                          <MaterialDesignIconView fill="#f1c40f80" glyphName="TROPHY" size="30" />
+                                       </graphic>
+                                    </Label>
+                                    <Label fx:id="homeScore" prefWidth="39.0" text="1000" textFill="#fafafa4d">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label fx:id="homeLeaderboard" style="-fx-background-color: #00000030; -fx-background-radius: 10;" text="Leaderboard" textFill="#fafafa80" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#f0c31180" glyphName="SORT_AMOUNT_DESC" size="20" />
+                                 </graphic>
+                                 <padding>
+                                    <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding>
+                        </GridPane>
+                        <HBox alignment="CENTER" style="-fx-background-color: #ffffff60; -fx-background-radius: 60;">
+                           <children>
+                              <Circle fx:id="homeAvatar" fill="TRANSPARENT" radius="50.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="5.0" />
+                              <VBox alignment="CENTER" HBox.hgrow="SOMETIMES">
+                                 <children>
+                                    <AutoScrollLabel fx:id="homeName" delay="200" labelLength="18" text="first last" textFill="#2c3e50">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </AutoScrollLabel>
+                                    <Label fx:id="homeBio" text="bio" textFill="#2c3e50">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="60.0" right="60.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <VBox alignment="CENTER" spacing="15.0">
+                           <children>
+                              <HBox alignment="CENTER" spacing="50.0">
+                                 <children>
+                                    <Label contentDisplay="TOP" style="-fx-text-fill: yellow;" text="Online Games" textFill="WHITE">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <graphic>
+                                          <JFXSpinner fx:id="homeOnlineGamesChart" progress="0.28" styleClass="chart-spinner" />
+                                       </graphic>
+                                    </Label>
+                                    <Label contentDisplay="TOP" style="-fx-text-fill: yellow;" text="Offline Games" textFill="WHITE">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <graphic>
+                                          <JFXSpinner fx:id="homeOfflineGamesChart" progress="0.72" styleClass="chart-spinner" />
+                                       </graphic>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Separator maxWidth="350.0" style="-fx-opacity: 0.2;" />
+                              <HBox alignment="CENTER" spacing="20.0">
+                                 <children>
+                                    <Label contentDisplay="TOP" style="-fx-text-fill: yellow;" text="Games Won" textFill="WHITE">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <graphic>
+                                          <JFXSpinner fx:id="homeGamesWonChart" progress="0.29" styleClass="chart-spinner" />
+                                       </graphic>
+                                    </Label>
+                                    <Label contentDisplay="TOP" style="-fx-text-fill: yellow;" text="Games Drawn" textFill="WHITE">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <graphic>
+                                          <JFXSpinner fx:id="homeGamesDrawnChart" progress="0.59" styleClass="chart-spinner" />
+                                       </graphic>
+                                    </Label>
+                                    <Label contentDisplay="TOP" style="-fx-text-fill: yellow;" text="Games Lost" textFill="WHITE">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <graphic>
+                                          <JFXSpinner fx:id="homeGamesLostChart" progress="0.12" styleClass="chart-spinner" />
+                                       </graphic>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Separator maxWidth="350.0" style="-fx-opacity: 0.2;" />
+                        <Label fx:id="homeTips" alignment="CENTER" graphicTextGap="10.0" onMouseClicked="#homeTipsClicked" style="-fx-background-radius: 10; -fx-background-color: #ffffff10;" text="You can add friends with going to friends tab" textFill="#fcfcfc80" VBox.vgrow="SOMETIMES">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIconView fill="#f1c40f" glyphName="BOLT" size="25" />
+                           </graphic>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+        </content>
+         <graphic>
+            <FontAwesomeIconView fill="#f1c40f" glyphName="HOME" size="35" wrappingWidth="33.0" />
+         </graphic>
+      </Tab>
+      <Tab fx:id="gamesTab" style="-fx-cursor: hand;" text="Games">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="261.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/pictures/TicTacToe.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="219.0" layoutY="379.0" prefHeight="53.0" prefWidth="213.0" text="To be added" textFill="#effc00">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView fill="#effc00" glyphName="GEARS" layoutX="168.0" layoutY="422.0" size="48" />
+                  <JFXRadioButton layoutX="69.0" layoutY="122.0" selected="true" text="X" textFill="WHITE">
+                     <toggleGroup>
+                        <ToggleGroup />
+                     </toggleGroup>
+                  </JFXRadioButton>
+                  <JFXRadioButton layoutX="116.0" layoutY="122.0" text="O" textFill="WHITE">
+                     <toggleGroup>
+                        <ToggleGroup />
+                     </toggleGroup></JFXRadioButton>
+                  <Label layoutX="35.0" layoutY="65.0" text="Play with AI as" textFill="#ffef00">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <JFXButton buttonType="RAISED" layoutX="77.0" layoutY="171.0" style="-fx-background-color: #1B1464;" text="Play now!" textFill="WHITE" />
+                  <JFXComboBox layoutX="430.0" layoutY="118.0" prefHeight="25.0" prefWidth="121.0" promptText="select your friend" style="-fx-prompt-text-fill: white;" />
+                  <Label layoutX="390.0" layoutY="68.0" text="Play with your friend" textFill="#ffef00">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <JFXButton buttonType="RAISED" layoutX="457.0" layoutY="171.0" style="-fx-background-color: #1B1464;" text="Play now!" textFill="WHITE" />
+               </children></AnchorPane>
+        </content>
+         <graphic>
+            <FontAwesomeIconView fill="#f1c40f" glyphName="GAMEPAD" size="35" />
+         </graphic>
+      </Tab>
+      <Tab fx:id="chatTab" style="-fx-cursor: hand;" text="Chat">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="557.0" fitWidth="384.0" layoutX="217.0" layoutY="-2.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../resources/pictures/chat_background.jpg" />
+                     </image>
+                  </ImageView>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SEND" layoutX="570.0" layoutY="535.0" size="20">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </FontAwesomeIconView>
+                  <TextArea layoutX="279.0" layoutY="510.0" prefHeight="36.0" prefWidth="284.0" promptText="write a message" wrapText="true" />
+                  <MaterialDesignIconView fill="#a8a2a2" glyphName="EMOTICON_HAPPY" layoutX="239.0" layoutY="539.0" size="30">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></MaterialDesignIconView>
+                  <ScrollPane prefHeight="554.0" prefWidth="218.0" styleClass="chat-users-scroll-pane">
+                     <content>
+                        <VBox alignment="TOP_CENTER" spacing="2.0" />
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane layoutX="225.0" layoutY="58.0" prefHeight="447.0" prefWidth="376.0" styleClass="chat-messages-scroll-pane">
+                     <content>
+                        <VBox alignment="CENTER">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+                  <Label alignment="CENTER" layoutX="262.0" layoutY="16.0" prefHeight="30.0" prefWidth="338.0" styleClass="title" text="Please select a chat" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView fill="#f8f8f8d1" glyphName="TRASH_ALT" layoutX="240.0" layoutY="39.0" size="25">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </FontAwesomeIconView>
+                  <GridPane alignment="CENTER" hgap="3.0" layoutX="250.0" layoutY="240.0" styleClass="emoji-grid-pane" vgap="3.0" visible="false">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" prefWidth="30.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" prefWidth="30.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" prefWidth="30.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" prefWidth="30.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" prefWidth="30.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" prefWidth="30.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😐" textFill="#dfe454" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😠" textFill="#dfe454" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😰" textFill="#dfe454" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="💩" textFill="#ae6b1d" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😑" textFill="#dfe454" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😡" textFill="#dfe454" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😱" textFill="#dfe454" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="🙁" textFill="#dfe454" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😊" textFill="#dfe454" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😢" textFill="#dfe454" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😲" textFill="#dfe454" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="🙂" textFill="#dfe454" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😂" textFill="#dfe454" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😓" textFill="#dfe454" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="🙃" textFill="#dfe454" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😤" textFill="#dfe454" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="❤" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="👍" textFill="#faffb5" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="👎" textFill="#faffb5" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="💪" textFill="#faffb5" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="🚶‍♂️" textFill="#dfe454" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="🎮" textFill="#faffb5" GridPane.columnIndex="5" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😎" textFill="#dfe454" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😡" textFill="#dfe454" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="👋" textFill="#faffb5" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="🌺" textFill="#ff1aa1" GridPane.columnIndex="4" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="🔥" textFill="#ffa300" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😶" textFill="#dfe454" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😘" textFill="#dfe454" GridPane.columnIndex="5" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="😉" textFill="#dfe454" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="🤘" textFill="#faffb5" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" styleClass="emoji" text="✊" textFill="#faffb5" GridPane.columnIndex="5" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Label>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                           <image>
+                              <Image url="@../../../../../New%20folder/hand/1f4aa-1f3fb.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../../../../../New%20folder/face/1f61c.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../../../../../New%20folder/face/1f642.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../../../../../New%20folder/face/1f60d.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../../../../../New%20folder/face/1f61a.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../../../../../New%20folder/face/1f602.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../../../../../New%20folder/face/1f631.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+                           <image>
+                              <Image url="@../../../../../New%20folder/face/1f910.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </GridPane>
+               </children></AnchorPane>
+        </content>
+         <graphic>
+            <FontAwesomeIconView fill="#f1c40f" glyphName="WECHAT" size="35" />
+         </graphic>
+      </Tab>
+      <Tab fx:id="friendsTab" style="-fx-cursor: hand;" text="Friends">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <HBox alignment="CENTER" layoutX="129.0" layoutY="14.0" spacing="10.0" style="-fx-background-color: #34495e; -fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.leftAnchor="129.0" AnchorPane.rightAnchor="129.0" AnchorPane.topAnchor="15.0">
+                     <children>
+                        <AutoCompletionTextField fx:id="friendsAddFriend" labelFloat="true" onAction="#friendsAddFriendPressed" prefWidth="250.0" promptText="add friend" style="-fx-font-size: 18;" />
+                        <FontAwesomeIconView fill="#f1c40f" glyphName="PLUS_CIRCLE" onMouseClicked="#friendsAddFriendPressed" size="35">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </FontAwesomeIconView>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
+                     </padding>
+                  </HBox>
+                  <Label fx:id="friendsServer" graphicTextGap="5.0" layoutX="232.0" layoutY="92.0" text="connecting to server" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="92.0">
+                     <graphic>
+                        <JFXSpinner radius="5.0" />
+                     </graphic>
+                  </Label>
+                  <HBox alignment="CENTER" layoutX="105.0" layoutY="136.0" spacing="200.0" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="136.0">
+                     <children>
+                        <Label style="-fx-font-size: 28;" styleClass="title" text="Friends" />
+                        <Label style="-fx-font-size: 28;" styleClass="title" text="Requests" />
+                     </children>
+                  </HBox>
+                  <HBox fillHeight="false" layoutX="20.0" layoutY="177.0" spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                     <children>
+                        <ScrollPane prefHeight="350.0" prefWidth="270.0" styleClass="friends-scroll-pane">
+                           <content>
+                              <VBox fx:id="friendsVBox" prefWidth="250.0" spacing="10.0" />
+                           </content>
+                        </ScrollPane>
+                        <ScrollPane prefHeight="350.0" prefWidth="270.0" styleClass="friends-scroll-pane">
+                           <content>
+                              <VBox fx:id="friendsRequestsVBox" prefWidth="250.0" spacing="10.0" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+               </children></AnchorPane>
+        </content>
+         <graphic>
+            <FontAwesomeIconView fill="#f1c40f" glyphName="GROUP" size="35" />
+         </graphic>
+      </Tab>
+      <Tab fx:id="settingsTab" closable="false" style="-fx-cursor: hand;" text="Settings">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="50.0" style="-fx-background-color: #141f56;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label styleClass="title" text="Settings" textFill="WHITE">
+                           <font>
+                              <Font size="33.0" />
+                           </font>
+                           <effect>
+                              <Glow level="0.73" />
+                           </effect>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="settingsHBox" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                     <children>
+                        <JFXListView fx:id="settingsListView" prefWidth="250.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXListView>
+                     </children>
+                  </HBox>
+               </children></AnchorPane>
+        </content>
+         <graphic>
+            <MaterialDesignIconView fill="#efbf13" glyphName="SETTINGS" size="35" />
+         </graphic>
+      </Tab>
+   </tabs>
+</JFXTabPane>

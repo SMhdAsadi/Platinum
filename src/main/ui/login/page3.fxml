@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="343.0" spacing="40.0" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.login.Page3Controller">
+   <children>
+      <Label prefWidth="300.0" text="Fill out the fields below in case of privacy terms" textAlignment="CENTER" wrapText="true" />
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <FontAwesomeIconView fill="WHITE" glyphName="QUESTION" styleClass="icon" />
+            <JFXComboBox fx:id="question" prefHeight="31.0" prefWidth="260.0" promptText="choose a question" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <FontAwesomeIconView fill="WHITE" glyphName="LIGHTBULB_ALT" styleClass="icon" />
+            <JFXTextField fx:id="answer" prefHeight="31.0" prefWidth="260.0" promptText="write an answer" />
+         </children>
+      </HBox>
+      <JFXToggleButton fx:id="terms" contentDisplay="RIGHT" onAction="#termsPressed" size="8.0" text="I agree with your terms of services" textFill="WHITE" toggleColor="#2c3e50" toggleLineColor="#c0bacc" unToggleLineColor="#b5aaaa" />
+   </children>
+</VBox>

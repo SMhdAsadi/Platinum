@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" stylesheets="@Loading.css" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.loading.Loading">
+   <children>
+      <ImageView blendMode="HARD_LIGHT" cache="true" cacheHint="SPEED" fitHeight="600.0" fitWidth="600.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../resources/pictures/loading.gif" />
+         </image>
+      </ImageView>
+      <HBox alignment="CENTER" layoutY="477.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label fx:id="tips" alignment="CENTER" graphicTextGap="10.0" textAlignment="CENTER" textFill="#ffffff80">
+               <graphic>
+                  <FontAwesomeIconView fill="#cdc4c4" glyphName="BOLT" size="20" />
+               </graphic>
+            </Label>
+         </children>
+      </HBox>
+      <JFXProgressBar fx:id="progressBar" layoutX="100.0" layoutY="522.0" prefHeight="7.0" prefWidth="400.0" progress="0.0" />
+   </children>
+</AnchorPane>
