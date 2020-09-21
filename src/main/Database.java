@@ -1,20 +1,23 @@
 package main;
 
+import javafx.scene.control.Alert;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.ImagePattern;
 import main.auxiliary.*;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Database
 {
-    private final static String[] tips = new String[]{"You can add friends in friends tab",
-            "You can play game in games tab", "You can chat with your friends in chat tab",
-            "You can change you avatar in the setting tab", "You can change your name in the setting tab",
-            "You can change your bio in the setting tab", "You can create group with your friends",
-            "Online games have more points than offline games", "Each game has points, even if you loose"};
+    private final static String[] tips = new String[]{"see your friend requests in friends tab",
+            "Enter sends message, user ctrl + enter for next line", "you are able to delete or edit any message",
+            "You can change your password in the settings tab", "You can change your profile in the settings tab",
+            "click on me", "You can create group with your friends", "Online games have more points than offline games",
+            "Each game has points, even if you loose"};
 
     private final static String avatarPath = "main/resources/pictures/avatar";
 
@@ -23,18 +26,55 @@ public class Database
     private static String[] friends;
     private static String[] friendRequests;
     private static Group[] groups;
-    private static Map<String, Message[]> messages = new HashMap<>();
+    private static Map<String, LinkedList<MyMessage>> messages = new HashMap<>();
     private static GameStatistics gameStatistics;
     private static MyUser[] topPlayers = new MyUser[3];
 
-    public static void loadInfo()
-    {
+    public static final int EMOJI_COUNT = 176;
+    private static final String[] emojiFileNames = new String[EMOJI_COUNT];
+    private static final String[] emojiSmileys = new String[EMOJI_COUNT];
+
+    public static void loadInfo() {
         Server.getData(me.getUsername());
+        loadEmojis();
+    }
+    private static void loadEmojis() {
+        File emojiDir = new File(Main.class.getResource("resources/pictures/emoji").getPath());
+        File[] emojiFiles = emojiDir.listFiles();
+        if(emojiFiles == null)
+        {
+            Main.showAlert(Alert.AlertType.ERROR, "Error", "Cannot Load Emojis",
+                    "cannot load emojis maybe they are deleted from the app");
+            return;
+        }
+
+        int i = 0;
+        for(File emoji: emojiFiles)
+        {
+            emojiFileNames[i] = emoji.getName();
+            String emojiName = new String(Character.toChars(
+                    Integer.parseInt(emoji.getName().replace(".png", "").substring(1), 16)));
+            emojiSmileys[i] = emojiName;
+            i++;
+        }
     }
 
-    public static boolean hasUser(String username) {
-        return contains(getUsernames(), username);
+    public static String[] getEmojiSmileys()
+    {
+        return emojiSmileys;
     }
+    public static ImageView getEmojiImageView(String emojiSmiley, int width, int height) {
+        int index = indexOf(emojiSmileys, emojiSmiley);
+        ImageView imageView = new ImageView(new Image(
+                "file:" + Main.class.getResource("resources/pictures/emoji/" + emojiFileNames[index]).getPath()));
+        imageView.setFitHeight(width);
+        imageView.setFitWidth(height);
+        imageView.setSmooth(true);
+        imageView.setEffect(new DropShadow());
+        imageView.getStyleClass().add("emoji");
+        return imageView;
+    }
+
     public static boolean hasFriendRequest(String username) {
         return contains(getFriendRequests(), username);
     }
@@ -64,6 +104,22 @@ public class Database
     }
     public static void addFriend(String friend) {
         friends = addToArray(friends, friend);
+
+        LinkedList<MyMessage> initialMessages = new LinkedList<>();
+
+        MyUser me = Database.getMe();
+        MyUser friendUser = Database.getUser(friend);
+        String time = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss").format(new Date(System.currentTimeMillis()));
+        if(friendUser == null)
+            return;
+
+        initialMessages.add(
+                new MyMessage(1, friend, friendUser.getName(), time, false,
+                        friend + " has joined the chat"));
+        initialMessages.add(new MyMessage(2, me.getUsername(), me.getName(), time, false,
+                Database.getMe().getUsername() + " has joined the chat"));
+
+        messages.put("pv" + friend, initialMessages);
     }
     public static void removeFriendRequest(String request) {
         friendRequests = deleteFromArray(friendRequests, request);
@@ -95,7 +151,34 @@ public class Database
         return usernames;
     }
 
-    public static ImagePattern getAvatarImagePattern(int avatarNumber) {
+    public static void removeMessage(String chatID, int id)
+    {
+        LinkedList<MyMessage> chatMessages = messages.get(chatID);
+        for(int i = chatMessages.size() - 1; i >= 0; i--)
+        {
+            if(chatMessages.get(i).getId() == id)
+            {
+                chatMessages.remove(i);
+                break;
+            }
+        }
+    }
+
+    public static void editMessage(String chatID, int id, String newText)
+    {
+        LinkedList<MyMessage> chatMessages = messages.get(chatID);
+        for(int i = chatMessages.size() - 1; i >= 0; i--)
+        {
+            if(chatMessages.get(i).getId() == id)
+            {
+                chatMessages.get(i).setMessage(newText);
+                break;
+            }
+        }
+    }
+
+    public static ImagePattern getAvatarImagePattern(int avatarNumber)
+    {
         return new ImagePattern(new Image(avatarPath + avatarNumber + ".png"));
     }
 
@@ -105,10 +188,6 @@ public class Database
     {
         return me;
     }
-    public static MyUser[] getUsers()
-    {
-        return users;
-    }
     public static String[] getFriends()
     {
         return friends;
@@ -117,9 +196,9 @@ public class Database
     {
         return groups;
     }
-    public static Map<String, Message[]> getMessages()
+    public static LinkedList<MyMessage> getMessages(String chat)
     {
-        return messages;
+        return messages.get(chat);
     }
     public static MyUser[] getTopPlayers()
     {
@@ -151,7 +230,7 @@ public class Database
     {
         Database.groups = groups;
     }
-    public static void setMessages(Map<String, Message[]> messages)
+    public static void setMessages(Map<String, LinkedList<MyMessage>> messages)
     {
         Database.messages = messages;
     }
@@ -176,6 +255,13 @@ public class Database
                 return true;
         }
         return false;
+    }
+    private static int indexOf(String[] array, String key) {
+        for(int i = 0; i < array.length; i++)
+            if(array[i].equals(key))
+                return i;
+
+        return -1;
     }
     private static String[] addToArray(String[] array, String key) {
         String[] temp = new String[array.length + 1];

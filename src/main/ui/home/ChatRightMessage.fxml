@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<HBox alignment="TOP_RIGHT" prefWidth="360.0" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.home.ChatMessageController">
+   <children>
+      <VBox fx:id="vBox" alignment="TOP_RIGHT" onContextMenuRequested="#messageContextRequested" style="-fx-background-color: rgba(0, 0, 0, 0.8); -fx-background-radius: 20 0 20 20;">
+         <children>
+            <Label fx:id="name" textFill="#2980b9">
+               <font>
+                  <Font size="8.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <TextFlow fx:id="textFlow" textAlignment="CENTER" />
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" />
+                  <ColumnConstraints hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <MaterialDesignIconView fx:id="tick" fill="#16a085" glyphName="CHECK_ALL" size="15" GridPane.halignment="LEFT" />
+                  <Label fx:id="time" text="12:48" textFill="#95a5a6" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
+               </children>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="15.0" right="15.0" top="5.0" />
+         </padding>
+      </VBox>
+      <Circle fx:id="profile" fill="#1f93ff00" radius="20.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" top="10.0" />
+   </padding>
+</HBox>

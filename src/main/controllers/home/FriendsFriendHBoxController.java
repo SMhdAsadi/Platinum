@@ -83,6 +83,7 @@ public class FriendsFriendHBoxController
         if(result)
         {
             homeController.removeFriend(username);
+            homeController.removeChatHBox("pv" + username);
             Database.removeFriend(username);
         }
         else
@@ -93,6 +94,6 @@ public class FriendsFriendHBoxController
     @FXML
     void sendMessageClicked()
     {
-        System.out.println("Send Clicked");
+        homeController.goToChat(username);
     }
 }

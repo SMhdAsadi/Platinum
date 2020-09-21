@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import customComponents.AutoScrollLabel?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER_LEFT" focusTraversable="true" onMouseClicked="#chatHBoxClicked" prefWidth="220.0" spacing="5.0" style="-fx-background-color: rgba(0, 0, 0, 0.2);" styleClass="chat-hBox" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.home.ChatHBoxController">
+   <children>
+      <StackPane alignment="BOTTOM_RIGHT">
+         <children>
+            <Circle fx:id="profile" fill="#1f93ff00" radius="22.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" />
+            <Circle fx:id="status" fill="#20ff1f" radius="6.0" stroke="WHITE" strokeType="INSIDE" />
+         </children>
+      </StackPane>
+      <VBox alignment="CENTER_LEFT" HBox.hgrow="SOMETIMES">
+         <children>
+            <AutoScrollLabel fx:id="name" alignment="CENTER" delay="100" graphicTextGap="5.0" labelLength="16" text="name" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fx:id="icon" fill="WHITE" glyphName="GROUP" size="18" />
+               </graphic>
+            </AutoScrollLabel>
+            <AutoScrollLabel fx:id="description" alignment="CENTER" delay="200" labelLength="25" text="description" textFill="#a393cd">
+               <font>
+                  <Font size="10.0" />
+               </font></AutoScrollLabel>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+   </padding>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</HBox>

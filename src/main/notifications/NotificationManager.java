@@ -1,6 +1,7 @@
 package main.notifications;
 
 import main.Database;
+import main.auxiliary.MyMessage;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -56,8 +57,8 @@ public class NotificationManager
     private static void handleNotification(Notification notification)
     {
         if(notification instanceof UserAdded) userAdded((UserAdded) notification);
-//        if(notification instanceof ChatCleared) chatCleared();
-//            else if(notification instanceof ChatWasSeen) chatWasSeen();
+        if(notification instanceof ChatCleared) chatCleared((ChatCleared) notification);
+        else if(notification instanceof ChatWasSeen) chatWasSeen((ChatWasSeen) notification);
         else if(notification instanceof FriendRequested) friendRequested((FriendRequested) notification);
         else if(notification instanceof FriendRequestResponded) friendRequestResponded((FriendRequestResponded) notification);
         else if(notification instanceof FriendshipDeleted) friendShipDeleted((FriendshipDeleted) notification);
@@ -68,10 +69,26 @@ public class NotificationManager
 //            else if(notification instanceof GroupCreated) groupCreated();
 //            else if(notification instanceof GroupDeleted) groupDeleted();
 //            else if(notification instanceof GroupKicked) groupKicked();
-//            else if(notification instanceof MessageAdded) messageAdded();
-//            else if(notification instanceof MessageDeleted) messageDeleted();
-//            else if(notification instanceof MessageEdited) messageEdited();
+        else if(notification instanceof MessageAdded) messageAdded((MessageAdded) notification);
+            else if(notification instanceof MessageDeleted) messageDeleted((MessageDeleted) notification);
+            else if(notification instanceof MessageEdited) messageEdited((MessageEdited) notification);
         else if(notification instanceof UserChanged) userChanged((UserChanged) notification);
+    }
+
+    private static void chatCleared(ChatCleared notification)
+    {
+        soundManager.playNotification();
+        String chatID = notification.getChatID();
+
+        homeController.clearHistory(chatID);
+    }
+
+    private static void chatWasSeen(ChatWasSeen notification)
+    {
+        String chatID = notification.getChatID();
+
+        for(MyMessage message: Database.getMessages(chatID))
+            message.setIsSeen(true);
     }
 
     private static void friendRequested(FriendRequested notification)
@@ -94,6 +111,7 @@ public class NotificationManager
         {
             Database.addFriend(username);
             homeController.addFriend(username);
+            homeController.addChatHBox("pv" + username);
         }
 
         homeController.removeRequest(username);
@@ -106,12 +124,42 @@ public class NotificationManager
         String username = notification.getUsername();
 
         homeController.removeFriend(username);
+        homeController.removeChatHBox("pv" + username);
         Database.removeFriend(username);
     }
 
     private static void userAdded(UserAdded notification)
     {
         Database.addUser(notification.getNewUser());
+    }
+
+    private static void messageAdded(MessageAdded notification)
+    {
+        soundManager.playNewMessage();
+
+        String chatID = notification.getChatID();
+        MyMessage message = new MyMessage(notification.getMessage());
+        Database.getMessages(chatID).add(message);
+
+        homeController.newMessage(chatID, message);
+    }
+
+    private static void messageDeleted(MessageDeleted notification)
+    {
+        String chatID = notification.getChatID();
+        int id = notification.getMessageID();
+        Database.removeMessage(chatID, id);
+
+        homeController.deletedMessage(chatID, id);
+    }
+
+    private static void messageEdited(MessageEdited notification)
+    {
+        String chatID = notification.getChatID();
+        int id = notification.getMessageID();
+        String newText = notification.getNewMessageText();
+
+        Database.editMessage(chatID, id, newText);
     }
 
     private static void userChanged(UserChanged notification)

@@ -11,6 +11,7 @@ import java.io.*;
 import java.net.ConnectException;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 import static main.Main.*;
@@ -241,13 +242,18 @@ public class Server
             Database.setGameStatistics((GameStatistics) fromServer.readObject());
             Database.setFriendRequests((String[]) fromServer.readObject());
 
-            Map<String, Message[]> allMessages = new HashMap<>();
+            Map<String, LinkedList<MyMessage>> allMessages = new HashMap<>();
             int messageSize = fromServer.readInt();
             for (int i = 0; i < messageSize; i++)
             {
                 String id = fromServer.readUTF();
                 Message[] messages = (Message[]) fromServer.readObject();
-                allMessages.put(id, messages);
+
+                // convert Message array to MyMessage linked list
+                LinkedList<MyMessage> myMessages = new LinkedList<>();
+                for (Message message : messages) myMessages.add(new MyMessage(message));
+
+                allMessages.put(id, myMessages);
             }
             Database.setMessages(allMessages);
         } catch (IOException | ClassNotFoundException e)
@@ -337,6 +343,125 @@ public class Server
             toServer.writeUTF(myUsername);
             Notification deleteFriend = new FriendshipDeleted(friendUsername);
             toServer.writeObject(deleteFriend);
+            toServer.flush();
+
+            return fromServer.readBoolean();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public static MyMessage sendMessage(String username, String chatID, String text)
+    {
+        MyUser user = Database.getUser(username);
+        if(user == null)
+            return null;
+
+        Message message = new Message(username, user.getName(), System.currentTimeMillis(), false, text);
+
+        Socket socket = getSocket(MAIN_MENU);
+        if(socket == null)
+            return null;
+
+        try (ObjectOutputStream toServer = new ObjectOutputStream(socket.getOutputStream());
+             ObjectInputStream fromServer = new ObjectInputStream(socket.getInputStream()))
+        {
+            toServer.writeUTF(username);
+            Notification messageAdded = new MessageAdded(chatID, message);
+            toServer.writeObject(messageAdded);
+            toServer.flush();
+
+            Message finalMessage = (Message) fromServer.readObject();
+            return new MyMessage(finalMessage);
+        } catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static void chatWasSeen(String username, String chatID)
+    {
+        Socket socket = getSocket(MAIN_MENU);
+        if(socket == null)
+            return;
+
+        try (ObjectOutputStream toServer = new ObjectOutputStream(socket.getOutputStream());
+             ObjectInputStream fromServer = new ObjectInputStream(socket.getInputStream()))
+        {
+            toServer.writeUTF(username);
+            Notification chatWasSeen = new ChatWasSeen(chatID + ";" + username);
+            toServer.writeObject(chatWasSeen);
+            toServer.flush();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean deleteMessage(String username, String chatID, int id)
+    {
+        Socket socket = getSocket(MAIN_MENU);
+        if(socket == null)
+            return false;
+
+        try (ObjectOutputStream toServer = new ObjectOutputStream(socket.getOutputStream());
+             ObjectInputStream fromServer = new ObjectInputStream(socket.getInputStream()))
+        {
+            toServer.writeUTF(username);
+            Notification deleteMessage = new MessageDeleted(chatID + ";" + username, id);
+            toServer.writeObject(deleteMessage);
+            toServer.flush();
+
+            return fromServer.readBoolean();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public static boolean editMessage(String username, String chatID, int id, String newText)
+    {
+        Socket socket = getSocket(MAIN_MENU);
+        if(socket == null)
+            return false;
+
+        try (ObjectOutputStream toServer = new ObjectOutputStream(socket.getOutputStream());
+             ObjectInputStream fromServer = new ObjectInputStream(socket.getInputStream()))
+        {
+            toServer.writeUTF(username);
+
+            Notification editMessage = new MessageEdited(chatID + ";" + username, id, newText);
+            toServer.writeObject(editMessage);
+            toServer.flush();
+
+            return fromServer.readBoolean();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public static boolean clearHistory(String username, String chatID)
+    {
+        Socket socket = getSocket(MAIN_MENU);
+        if(socket == null)
+            return false;
+
+        try (ObjectOutputStream toServer = new ObjectOutputStream(socket.getOutputStream());
+             ObjectInputStream fromServer = new ObjectInputStream(socket.getInputStream()))
+        {
+            toServer.writeUTF(username);
+            Notification clearHistory = new ChatCleared(chatID + ";" + username);
+            toServer.writeObject(clearHistory);
             toServer.flush();
 
             return fromServer.readBoolean();

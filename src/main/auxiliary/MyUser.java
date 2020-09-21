@@ -5,12 +5,11 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MyUser implements Serializable
+public class MyUser
 {
     private final String username;
     private final StringProperty password = new SimpleStringProperty(this, "password", "");

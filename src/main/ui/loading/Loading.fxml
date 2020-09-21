@@ -17,7 +17,7 @@
       </ImageView>
       <HBox alignment="CENTER" layoutY="477.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label fx:id="tips" alignment="CENTER" graphicTextGap="10.0" textAlignment="CENTER" textFill="#ffffff80">
+            <Label fx:id="tips" alignment="CENTER" graphicTextGap="10.0" onMouseClicked="#tipClicked" textAlignment="CENTER" textFill="#ffffff80">
                <graphic>
                   <FontAwesomeIconView fill="#cdc4c4" glyphName="BOLT" size="20" />
                </graphic>

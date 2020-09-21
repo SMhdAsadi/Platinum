@@ -1,5 +1,6 @@
 package main.controllers.loading;
 
+import animatefx.animation.ZoomIn;
 import com.jfoenix.controls.JFXProgressBar;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -118,5 +119,12 @@ public class Loading implements Initializable
                 homeController.showHome();
         });
         timeline.play();
+    }
+
+    @FXML
+    void tipClicked()
+    {
+        tips.setText(Database.getTip());
+        new ZoomIn(tips).play();
     }
 }

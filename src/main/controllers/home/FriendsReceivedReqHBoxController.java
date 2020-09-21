@@ -58,6 +58,7 @@ public class FriendsReceivedReqHBoxController
             Database.addFriend(username.getText());
             homeController.removeRequest(username.getText());
             homeController.addFriend(username.getText());
+            homeController.addChatHBox("pv" + username.getText());
         }
     }
 
