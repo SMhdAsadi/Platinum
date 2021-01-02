@@ -1,3 +1,9 @@
-this is my advanced programming course project
+## Platinum
 
-Platinum is a application in which you can join to your friends, chat, create group and play many games with other people
+> my advanced programming course project
+
+Platinum is a application in which you can:
+1. join to your friends
+2. chat
+3. create group
+4. play many games with other people
